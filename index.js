@@ -1,13 +1,3 @@
-/*
-* JANGAN UBAH-UBAH INFO!!!
-* "JANGAN MODAL NAMA DOANG BRO!!!"
-* SCRIPT BY ARIS187 ID
-* JANGAN MODAL NAMA DOANG BOSQ
-* HARGAILAH YG MEMBUAT SCRIPT INI BOSQ
-* JANGAN UBAH-UBAH INFO!!!
-* ARIS187 ID
-* BOLEH UBAH TAPI KECUALI INFO!!!
-*/
 const qrcode = require("qrcode-terminal")
 const moment = require("moment-timezone")
 const fs = require("fs")
@@ -18,17 +8,15 @@ const arrayBulan = ['Januari', 'Februari', 'Maret', 'April', 'Mei', 'Juni', 'Jul
 const bulan = arrayBulan[moment().format('MM') - 1]
 
 const config = {
-    A187: '👾AR15BOT👾',
-    instagram: 'https://instagram.com/_sadboy.ig',
-    nomer: 'wa.me/6285722553839',
-    aktif: '24 JAM',
-    youtube: 'https://youtube.com/channel/UCGYLWtyT9IADYNUiK0uZiGg',
-    whatsapp: 'https://chat.whatsapp.com/DSSHmG2KjKJLoFp9B9mkVs',
+    A187: 'IHACKYOURS',
+    instagram: 'https://instagram.com/ihackyours_',
+    nomer: 'wa.me/6283140861605',
+    aktif: 'Sesuai Donate!',
     tanggal: `TANGGAL: ${moment().format('DD')} ${bulan} ${moment().format('YYYY')}`,
     waktu: time
 }
 
-const { A187, tanggal, waktu, instagram, whatsapp, youtube, nomer, aktif, ontime } = config
+const { A187, tanggal, waktu, instagram, whatsapp, nomer, aktif, ontime } = config
 
 const
 {
@@ -46,9 +34,6 @@ const
 
 const {
     help,
-    menu1,
-    menu2,
-    menu3,
     info,
     donate,
     alay,
@@ -109,7 +94,7 @@ const client = new WAConnection()
 
 client.on('qr', qr => {
    qrcode.generate(qr, { small: true })
-   console.log(`[ ${time} ] QR code is ready, subscribe Aris187 ID`)
+   console.log(`[ ${time} ] QR code IHackYours!`)
 })
 
 client.on('credentials-updated', () => {
@@ -123,11 +108,11 @@ fs.existsSync('./session.json') && client.loadAuthInfo('./session.json')
 
 client.connect();
 
-// client.on('user-presence-update', json => console.log(json.id + ' presence is => ' + json.type)) || console.log(`${time}: Bot by ig:@aditiaalfians`)
+// client.on('user-presence-update', json => console.log(json.id + ' presence is => ' + json.type)) || console.log(`${time}: Bot by @IHackYours`)
 
 client.on('message-status-update', json => {
    const participant = json.participant ? ' (' + json.participant + ')' : ''
-   console.log(`[ ${time} ] => bot by ig:@_sadboy.ig`)
+   console.log(`[ ${time} ] => bot by @IHackYours`)
 })
 
 client.on('message-new', async (m) => {
@@ -148,27 +133,17 @@ client.on('message-new', async (m) => {
 
    switch (prefix) {
        case 'help':
-           client.sendMessage(id, help.help(id, A187, tanggal, waktu, whatsapp, youtube, instagram, aktif, nomer, ontime), MessageType.text)
-           break
-       case 'menu1':
-           client.sendMessage(id, menu1.menu1(id, A187, tanggal, waktu, whatsapp, youtube, instagram, aktif, nomer, ontime), MessageType.text)
-           break
-       case 'menu2':
-           client.sendMessage(id, menu2.menu2(id, A187, tanggal, waktu, whatsapp, youtube, instagram, aktif, nomer, ontime), MessageType.text)
-           break
-       case 'menu3':
-           client.sendMessage(id, menu3.menu3(id, A187, tanggal, waktu, whatsapp, youtube, instagram, aktif, nomer, ontime), MessageType.text)
+           client.sendMessage(id, help.help(id, A187, tanggal, waktu, whatsapp, instagram, aktif, nomer, ontime), MessageType.text)
            break
       case 'donate':
-           client.sendMessage(id, donate.donate(id, A187, tanggal, waktu, whatsapp, youtube, instagram, aktif, nomer, ontime), MessageType.text)
+           client.sendMessage(id, donate.donate(id, A187, tanggal, waktu, whatsapp, instagram, aktif, nomer, ontime), MessageType.text)
            break          
       case 'info':
-           client.sendMessage(id, info.info(id, A187, tanggal, waktu, whatsapp, youtube, instagram,aktif, nomer, ontime), MessageType.text)
+           client.sendMessage(id, info.info(id, A187, tanggal, waktu, whatsapp, instagram, aktif, nomer, ontime), MessageType.text)
            break             
        case 'nulis':
            nulis(value)
                .then(data => {
-                   client.sendMessage(id, '[❗] WAIT BOSQ🖤', MessageType.text)
                    client.sendMessage(id, data, MessageType.image)
                })
                .catch(err => {
@@ -182,8 +157,7 @@ client.on('message-new', async (m) => {
            ytdl('mp3', value)
                .then(data => {
                    const { judul, size, hasil: link } = data
-                   let hasil = `✅ Lagu Berhasil Di Download, silahkan klik link dan download hasilnya\nKlik link dibawah🗡️\n\nJudul: ${judul}\n\nUkuran audio: ${size}\n\nLink: ${link}`
-                   client.sendMessage(id, '[❗] WAIT BOSQ🖤', MessageType.text)
+                   let hasil = `Lagu Berhasil Di Download, silahkan klik link dan download hasilnya\nKlik link dibawah \n\nJudul: ${judul}\n\nUkuran audio: ${size}\n\nLink: ${link}`
                    client.sendMessage(id, hasil, MessageType.text)
                })
                .catch(err => {
@@ -194,8 +168,7 @@ client.on('message-new', async (m) => {
            ytdl('mp4', value)
                .then(data => {
                    const { judul, size, hasil: link } = data
-                   let hasil = `✅ Video Berhasil Di Download, silahkan klik link dan download hasilnya\nKlik link dibawah🗡️\n\nJudul: ${judul}\n\nUkuran audio: ${size}\n\nLink: ${link}`
-                   client.sendMessage(id, '[❗] WAIT BOSQ🖤', MessageType.text)
+                   let hasil = `Video Berhasil Di Download, silahkan klik link dan download hasilnya\nKlik link dibawah \n\nJudul: ${judul}\n\nUkuran audio: ${size}\n\nLink: ${link}`
                    client.sendMessage(id, hasil, MessageType.text)
                })
                .catch(err => {
@@ -206,8 +179,7 @@ client.on('message-new', async (m) => {
            tweetdl(value)
                .then(data => {
                     const { size, hasil: link } = data
-                    let hasil = `✅ Berhasil! silahkan klik link di bawah untuk mendownload hasilnya!\nKlik link dibawah🗡️\n\nSize: ${size}\n\nLink: ${link}`
-                    client.sendMessage(id, '[❗] WAIT BOSQ🖤', MessageType.text)
+                    let hasil = `Berhasil! silahkan klik link di bawah untuk mendownload hasilnya!\nKlik link dibawah \n\nSize: ${size}\n\nLink: ${link}`
                     client.sendMessage(id, hasil ,MessageType.text)
                })
                .catch(err => {
@@ -218,7 +190,7 @@ client.on('message-new', async (m) => {
            tiktokdl(value)
                .then(data => {
                     const { url, nama, durasi, deskripsi } = data
-                    let hasil = `✅ Berhasil!!! Silahkan klik link dibawah ini untuk mendownload hasilnya! \nKlik link dibawah🗡️\n\nJudul: ${deskripsi} \n\nDurasi: ${durasi}\n\nNama: ${nama}\n\nUrl: ${url}`;
+                    let hasil = `Berhasil!!! Silahkan klik link dibawah ini untuk mendownload hasilnya! \nKlik link dibawah\n\nJudul: ${deskripsi} \n\nDurasi: ${durasi}\n\nNama: ${nama}\n\nUrl: ${url}`;
                     client.sendMessage(id, hasil, MessageType.text)
                })
                .catch(err => {
@@ -229,7 +201,7 @@ client.on('message-new', async (m) => {
            wiki(value)
                .then(data => {
                     const { hasil: res } = data
-                    let hasil = `📝Menurut Wikipedia:\n\n${res}`
+                    let hasil = `Menurut Wikipedia:\n\n${res}`
                     client.sendMessage(id, hasil, MessageType.text)
                })
                .catch(err => {
@@ -240,7 +212,7 @@ client.on('message-new', async (m) => {
            jsholat(value)
                .then(data => {
                    const { Imsyak, Subuh, Dzuhur, Ashar, Maghrib, Isya, Dhuha } = data
-                   let hasil = `Jadwal sholat di *${value}* hari ini adalah\n\n⚡Imsyak : ${Imsyak}\n⚡Subuh : ${Subuh} WIB\n⚡Dzuhur : ${Dzuhur}WIB\n⚡Ashar : ${Ashar} WIB\n⚡Maghrib : ${Maghrib}\n⚡Isya : ${Isya} WIB\n⚡Tengah malam : ${Dhuha} WIB`
+                   let hasil = `Jadwal sholat di *${value}* hari ini adalah\n\n Imsyak : ${Imsyak}\n Subuh : ${Subuh} WIB\n Dzuhur : ${Dzuhur}WIB\n Ashar : ${Ashar} WIB\n Maghrib : ${Maghrib}\n Isya : ${Isya} WIB\n Tengah malam : ${Dhuha} WIB`
                    client.sendMessage(id, hasil, MessageType.text)
                })
                .catch(err => {
@@ -278,7 +250,7 @@ client.on('message-new', async (m) => {
            corona()
                .then(data => {
                    const { meninggal, sembuh, positif } = data
-                   let hasil = `📌DATA WABAH COVID-19 TERBARU DI INDONESIA\n\n📍Positif ==> ${positif} \n📍Sembuh ==> ${sembuh} \n📍Meninggal ==> ${meninggal}`
+                   let hasil = `DATA WABAH COVID-19 TERBARU DI INDONESIA\n\n Positif ${positif} \n Sembuh ${sembuh} \n Meninggal ${meninggal}`
                    client.sendMessage(id, hasil, MessageType.text)
                })
                .catch(err => {
@@ -324,7 +296,6 @@ client.on('message-new', async (m) => {
                case 'cewek':
                    cewePict()
                        .then(buffer => {
-                           client.sendMessage(id, '[❗] WAIT BOSQ🖤', MessageType.text)
                            client.sendMessage(id, buffer, MessageType.image)
                        })
                        .catch(err => {
@@ -334,7 +305,6 @@ client.on('message-new', async (m) => {
                case 'cowok':
                    cowoPict()
                        .then(buffer => {
-                           client.sendMessage(id, '[❗] WAIT BOSQ🖤', MessageType.text)
                            client.sendMessage(id, buffer, MessageType.image)
                        })
                        .catch(err => {
@@ -349,7 +319,6 @@ client.on('message-new', async (m) => {
        case 'animepict':
            animPict()
                .then(buffer => {
-                   client.sendMessage(id, '[❗] WAIT BOSQ🖤', MessageType.text)
                    client.sendMessage(id, buffer, MessageType.image)
                })
                .catch(err => {
@@ -360,7 +329,7 @@ client.on('message-new', async (m) => {
            lirik(value)
                .then(data => {
                    const { hasil: lirik } = data
-                   let hasil = `📍lirik lagu📍 *${value}* \n\n\n${lirik}`
+                   let hasil = `lirik lagu *${value}* \n\n\n${lirik}`
                    client.sendMessage(id, hasil, MessageType.text)
                })
                .catch(err => {
@@ -371,7 +340,7 @@ client.on('message-new', async (m) => {
            fb(value)
                .then(data => {
                    const { resultHD, resultSD } = data
-                   let hasil = `Pilih resolusi nya sayang😙 \n\n\n HD ${resultHD} \n\n\n SD ${resultSD}`
+                   let hasil = `Pilih resolusi : \n\n\n HD ${resultHD} \n\n\n SD ${resultSD}`
                    client.sendMessage(id, hasil, MessageType.text)
                })
                .catch(err => {
@@ -409,8 +378,7 @@ client.on('message-new', async (m) => {
            igStalk(value)
                .then(data => {
                    const { Username, Jumlah_Followers, Jumlah_Following, Name, Jumlah_Post } = data
-                   client.sendMessage(id, '[WAIT] Stalking...⏳', MessageType.text)
-                   let hasil = `✨Biodata Instagram _${value}_ \n\n 🧶 *Username* : ${Username}_ \n 🌀 *Nama* : _${Name}_ \n 🌟 *Jumlah Followers* : _${Jumlah_Followers}_ \n 🌠 *Jumlah_Following* : _${Jumlah_Following}_ \n ⭐ *Jumlah_Post* : _${Jumlah_Post}_ `
+                   let hasil = `Biodata Instagram *${value}* \n\n 🧶 *Username* : ${Username}* \n *Nama* : *${Name}* \n *Jumlah Followers* : *${Jumlah_Followers}* \n *Jumlah_Following* : *${Jumlah_Following}* \n *Jumlah_Post* : *${Jumlah_Post}* `
                    client.sendMessage(id, hasil, MessageType.text)
                })
                .catch(err => {
@@ -454,7 +422,7 @@ case 'puisi2':
            infogempa()
                .then(data => {
                    const { lokasi, kedalaman, koordinat, magnitude, waktu } = data
-                   let hasil = `*INFO GEMPA* \n\ *Lokasi* : _${lokasi}_ \n *Kedalaman* : _${kedalaman}_ \n *Koordinat* : _${koordinat}_ \n *Magnitude* : _${magnitude}_ \n *Waktu* : _${waktu}_`
+                   let hasil = `*INFO GEMPA* \n\ *Lokasi* : *${lokasi}* \n *Kedalaman* : *${kedalaman}* \n *Koordinat* : *${koordinat}* \n *Magnitude* : *${magnitude}* \n *Waktu* : *${waktu}*`
                    client.sendMessage(id, hasil, MessageType.text)
                })
                .catch(err => {
@@ -465,7 +433,7 @@ case 'puisi2':
            chord(value)
                .then(data => {
                    const { result } = data
-                   let hasil = `Nih chord lagu *${value}* sayang ♥️\n\n  _${result}_ `
+                   let hasil = `Nih chord lagulu *${value}* ^_^\n\n  _${result}_ `
                    client.sendMessage(id, hasil, MessageType.text)
                })
                .catch(err => {
@@ -475,7 +443,7 @@ case 'puisi2':
            kbbi(value)
                .then(data => {
                    const { result } = data
-                   let hasil = `*${value}* menurut KBBI ️\n\n  _${result}_ `
+                   let hasil = `*${value}* menurut KBBI ️\n\n  *${result}* `
                    client.sendMessage(id, hasil, MessageType.text)
                })
                .catch(err => {
@@ -487,7 +455,7 @@ case 'puisi2':
  zodiak(value)
                .then(data => {
                    const { lahir, ultah, usia, zodiak } = data
-                   let hasil = `*Lahir* : _${lahir}_ n\n *Ultah* : _${ultah}_ \n *Usia* : _${usia}_:\n *Zodiak* : _${zodiak}_ `
+                   let hasil = `*Lahir* : *${lahir}* n\n *Ultah* : *${ultah}* \n *Usia* : *${usia}* :\n *Zodiak* : *${zodiak}* `
                    client.sendMessage(id, hasil, MessageType.text)
                })
                .catch(err => {
@@ -509,7 +477,7 @@ case 'puisi2':
            wikien(value)
                .then(data => {
                    const { result } = data
-                   let hasil = `*♻️According to Wikipedia🗿:* \n\n  _${result}_ `
+                   let hasil = `*Wikipedia:* \n\n  _${result}_ `
                    client.sendMessage(id, hasil, MessageType.text)
                })
                .catch(err => {
@@ -564,7 +532,7 @@ case 'spamgmail':
            infoanime(value)
                .then(data => {
                    const { result } = data
-                   let hasil = `*INFO ANIME ${value} :* \n\n _${result}_  `
+                   let hasil = `*INFO ANIME ${value} :* \n\n *${result}*  `
                    client.sendMessage(id, hasil, MessageType.text)
                })
                .catch(err => {
@@ -575,7 +543,7 @@ case 'gay':
            gay()
                .then(data => {
                    const { desc, persen } = data
-                   let hasil = `*${desc} \n\n *Persen Gay Lo Su!!!* _${persen}_  `
+                   let hasil = `*${desc} \n\n *Persen gay :* *${persen}*  `
                    client.sendMessage(id, hasil, MessageType.text)
                })
                .catch(err => {
@@ -586,7 +554,7 @@ case 'gay':
            indohot()
                .then(data => {
                    const { judul, genre, durasi, url } = data
-                   let hasil = `Tobat GOBLOK😙* \n\n *Judul* _${judul}_ \n\n *Status* _${genre}_ \n\n *Durasi* _${durasi}_ \n\n *Link Bosq* _${url}_  `
+                   let hasil = `Dah lah* \n\n *Judul* *${judul}* \n\n *Status* *${genre}* \n\n *Durasi* *${durasi}* \n\n *Link * *${url}*  `
                    client.sendMessage(id, hasil, MessageType.text)
                })
                .catch(err => {
@@ -597,7 +565,7 @@ case 'filmanime':
            filmanime(value)
                .then(data => {
                    const { title, rating, sinopis, video } = data
-                   let hasil = `*Film Anime ${value} :* \n\n *Judul* _${title}_ \n\n *Rating* _${rating}_ \n\n *Info* _${sinopsis}_ \n\n *Link Video* _${video}_  `
+                   let hasil = `*Film Anime ${value} :* \n\n *Judul* *${title}* \n\n *Rating* *${rating}* \n\n *Info* *${sinopsis}* \n\n *Link Video* *${video}*  `
                    client.sendMessage(id, hasil, MessageType.txext)
                })
                .catch(err => {
@@ -608,7 +576,7 @@ case 'filmanime':
            resep(value)
                .then(data => {
                    const { title, user,  datePublished, dificulty, times, serving, bahan, tutor } = data
-                   let hasil = `*Judul:* ${title}\n*Penulis:* ${user}\n*Rilis:* ${datePublished}\n*Level:* ${dificulty}\n*Waktu:* ${times}\n*Porsi:* ${servings}\n\n*Bahan-bahan:*\n${ingredient}\n\n*Step-by-step:*\n ${step} `
+                   let hasil = `*Judul:* ${title}\n*Penulis:* ${user}\n*Rilis:* ${datePublished}\n*Level:* ${dificulty}\n*Waktu:* ${times}\n*Porsi:* ${servings}\n\n*Bahan-bahan:*\n${ingredient}\n\n*Totorial:*\n ${step} `
                    client.sendMessage(id, hasil, MessageType.text)
                })
                .catch(err => {
@@ -619,7 +587,7 @@ case 'filmanime':
            namaninja(value)
                .then(data => {
                    const { ninja } = data
-                   let hasil = `Nama Ninja *${value}*💡:\n\n _${ninja}_ `
+                   let hasil = `Nama Ninja *${value}* :\n\n *${ninja}* `
                    client.sendMessage(id, hasil, MessageType.text)
                })
                .catch(err => {
@@ -630,7 +598,7 @@ case 'filmanime':
            cektanggal(value)
                .then(data => {
                    const { tanggal, keterangan } = data
-                   let hasil = `Menurut tanggal ${value} adalah\n\n *Tanggal* : _${tanggal}_ \n *Keterangan* : _${keterangan}_  `
+                   let hasil = `Menurut tanggal ${value} adalah\n\n *Tanggal* : *${tanggal}* \n *Keterangan* : *${keterangan}*  `
                    client.sendMessage(id, hasil, MessageType.text)
                })
                .catch(err => {
@@ -641,7 +609,7 @@ case 'filmanime':
            bitly(value)
                .then(data => {
                    const { result } = data
-                   let hasil = `Nih kak udah jadi☣️ :) \n\n${result} `
+                   let hasil = `Hasil : \n\n${result} `
                    client.sendMessage(id, hasil, MessageType.text)
                })
                .catch(err => {
@@ -673,7 +641,6 @@ case 'filmanime':
            case 'map':
            map()
                .then(buffer => {
-                   client.sendMessage(id, '[❗] WAIT BOSQ🖤', MessageType.text)
                    client.sendMessage(id, buffer, MessageType.image)
                })
                .catch(err => {
@@ -683,7 +650,6 @@ case 'filmanime':
            case 'waifu':
            waifu()
                .then(buffer => {
-                   client.sendMessage(id, '[❗] WAIT BOSQ🖤', MessageType.text)
                    client.sendMessage(id, buffer, MessageType.image)
                })
                .catch(err => {
@@ -693,7 +659,6 @@ case 'filmanime':
       case 'loli':
            loli()
                .then(buffer => {
-                   client.sendMessage(id, '[❗] WAIT BOSQ🖤', MessageType.text)
                    client.sendMessage(id, buffer, MessageType.image)
                })
                .catch(err => {
@@ -703,7 +668,6 @@ case 'filmanime':
            case 'ssweb':
            ssweb()
                .then(buffer => {
-                   client.sendMessage(id, '[❗] WAIT BOSQ🖤', MessageType.text)
                    client.sendMessage(id, buffer, MessageType.image)
                })
                .catch(err => {
@@ -713,7 +677,6 @@ case 'filmanime':
      case 'cooltext':
            cooltext()
                .then(buffer => {
-                   client.sendMessage(id, '[❗] WAIT BOSQ🖤', MessageType.text)
                    client.sendMessage(id, buffer, MessageType.image)
                })
                .catch(err => {
@@ -723,7 +686,6 @@ case 'filmanime':
            case 'ttp':
            ttp()
                .then(buffer => {
-                   client.sendMessage(id, '[❗] WAIT BOSQ🖤', MessageType.text)
                    client.sendMessage(id, buffer, MessageType.image)
                })
                .catch(err => {
@@ -733,7 +695,6 @@ case 'filmanime':
            case 'nekonime':
            nekonime()
                .then(buffer => {
-                   client.sendMessage(id, '[❗] WAIT BOSQ🖤', MessageType.text)
                    client.sendMessage(id, buffer, MessageType.image)
                })
                .catch(err => {
@@ -743,7 +704,6 @@ case 'filmanime':
            case 'ytmp3':
            mp3()
                .then(buffer => {
-                   client.sendMessage(id, '[❗] WAIT BOSQ🖤', MessageType.text)
                    client.sendMessage(id, buffer, MessageType.image)
                })
                .catch(err => {
@@ -754,7 +714,7 @@ case 'filmanime':
             client.sendContact(from, '6285722553839@c.us')
             break
       case 'tts':
-            if (args.length === 1) return client.reply(from, 'Kirim perintah *!tts [id, en, jp, ar] [teks]*, contoh *!tts id halo semua*')
+            if (args.length === 1) return client.reply(from, 'Kirim perintah *!tts [id, en, jp, ar] [teks]*, contoh *!tts id halo IHackYours*')
             const ttsId = require('node-gtts')('id')
             const ttsEn = require('node-gtts')('en')
 	    const ttsJp = require('node-gtts')('ja')
@@ -780,14 +740,14 @@ case 'filmanime':
                     client.sendPtt(from, './media/tts/resAr.mp3', id)
                 })
             } else {
-                client.reply(from, 'Masukkan data bahasa : [id] untuk indonesia, [en] untuk inggris, [jp] untuk jepang, dan [ar] untuk arab', id)
+                client.reply(from, '*Masukkan data bahasa* : [id] *untuk indonesia*, [en] *untuk inggris*, [jp] *untuk jepang*, dan [ar] *untuk arab*', id)
             }
             break     
       case 'stickergif':
             if (isMedia) {
                 if (mimetype === 'video/mp4' && message.duration < 10 || mimetype === 'image/gif' && message.duration < 10) {
                     const mediaData = await decryptMedia(message, uaOverride)
-                    client.reply(from, '[WAIT] Sedang di proses⏳ silahkan tunggu ± 1 min!', id)
+                    client.reply(from, 'Tunggu Sebentar', id)
                     const filename = `./media/aswu.${mimetype.split('/')[1]}`
                     await fs.writeFileSync(filename, mediaData)
                     await exec(`gify ${filename} ./media/output.gif --fps=30 --scale=240:240`, async function (error, stdout, stderr) {
@@ -795,7 +755,7 @@ case 'filmanime':
                         await client.sendImageAsSticker(from, `data:image/gif;base64,${gif.toString('base64')}`)
                     })
                 } else (
-                    client.reply(from, '[❗] Kirim video dengan caption *!stickerGif* max 10 sec!', id)
+                    client.reply(from, 'Kirim video dengan caption *!stickerGif*', id)
                 )
             }
             break     
